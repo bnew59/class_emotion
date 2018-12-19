@@ -30,3 +30,45 @@
     transform: rotate(360deg);
   }
 }
+
+.GettingItButton {
+  margin-left: 80px;
+  color:green;
+  font-size: 30px;
+  font-weight: bold;
+}
+.GettingItNumber {
+  margin-left: 135px;
+  margin-bottom: 50px;
+}
+.SortOfButton {
+  margin-left: 40px;
+  color: orange;
+  font-size: 30px;
+  font-weight: bold;
+}
+.SortOfNumber {
+  margin-left: 135px;
+  margin-bottom: 70px;
+}
+.LostButton {
+  margin-left: 80px;
+  color: red;
+  font-size: 30px;
+  font-weight: bold;
+}
+.LostNumber {
+  margin-left: 135px;
+  margin-bottom: 70px;
+}
+.ClassRoomEmotion {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 80px;
+  color:red
+}
+.ClickTheButton {
+  margin-left: 80px;
+  margin-bottom: 80px;
+}
