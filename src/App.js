@@ -37,9 +37,9 @@ class App extends Component {
     weeksData.forEach((week, index) => {
       console.log(index)
       var baseColors = [
-        `rgba(255,0,0,0.9)`,
-        `rgba(255,255,0,0.9)`,
-        `rgba(0,255,0,0.9)`
+        `rgba(255,0,0,1)`,
+        `rgba(255,255,0,1)`,
+        `rgba(0,255,0,1)`
      ]
 
       var rendered = <div>
