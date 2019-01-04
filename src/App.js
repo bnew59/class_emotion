@@ -69,7 +69,7 @@ class App extends Component {
   render() {
     return (
       <div>
-
+        <Register />
         <h1 className='ClassRoomEmotion'>Classroom Emotion Tracker</h1>
         <h2 className ='ClickTheButton'>Click The Button Below That Applies To You This Week...</h2>
         <VeryLost />

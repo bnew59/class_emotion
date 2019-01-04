@@ -48,6 +48,19 @@ app.post('/VeryLost', function(req, res){
   res.end();
 })
 
+app.post('/SortOfGettingIt', function(req, res){
+  db.any("INSERT INTO week_1 (uid, first_name, last_name, sort_of_getting_it, week_num, comments) VALUES ('bnew', 'Brent', 'Newman', 1, 1, 'bla bla')")
+
+  console.log('sort of posting')
+  res.end();
+})
+
+app.post('/GettingIt', function(req, res){
+  db.any("INSERT INTO week_1 (uid, first_name, last_name, getting_it, week_num, comments) VALUES ('bnew', 'Brent', 'Newman', 1, 1, 'bla bla')")
+
+  console.log('getting it posting')
+  res.end();
+})
 
 app.listen(5000,function(req,res){
   console.log("Server has started...")

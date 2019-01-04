@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import axios from 'axios'
+const SORT_OF_GETTING_IT = 'http://localhost:5000/SortOfGettingIt'
 
-class SortOfGettingIt extends Component {
+export class SortOfGettingIt extends Component {
 
   constructor(props) {
     super(props)
@@ -15,27 +17,35 @@ class SortOfGettingIt extends Component {
 
   incrementCounter = () => {
 
+    this.setState({
+      counter: this.state.counter + 1
+    })
+
     // dispatch an action to set the global state
     this.props.onIncrementDispatch()
 
-    this.setState({
-      SortOfGettingIt: this.state.SortOfGettingIt + 1
-    })
+    //let user = this.state.user
     
+    axios.post(SORT_OF_GETTING_IT,{
+      counter: this.state.counter
+    })
+    //.then((response))
 
   }
+
+  
 
   render() {
     return (
     <div>
-      <button className='SortOfButton' onClick={this.incrementCounter}> Sort Of Getting It!</button>
-      <h1 className='SortOfNumber'>{this.state.SortOfGettingIt}</h1>
+      <button className='SortOfButton' onClick={this.incrementCounter}> Sort Of Getting It</button>
+      <h1 className='SortOfNumber' >{this.props.SortOfGettingIt}</h1>
     </div>
 
     )
   }
-
 }
+
 
 const mapStateToProps = (state) => {
   return {
@@ -46,6 +56,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onIncrementDispatch: () => dispatch({type: "SORTOFGETTINGIT_COUNTER"})
+    
   }
 }
 

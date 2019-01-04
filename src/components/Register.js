@@ -52,7 +52,7 @@ export class Register extends Component {
         <input type="text" onChange={this.handleTextBoxChange} name="last_name" placeholder="Last Name" />
         <input type="text" onChange={this.handleTextBoxChange} name="week_num" placeholder="Week Number" />
         <input type="text" onChange={this.handleTextBoxChange} name="comments" placeholder="Comments" />
-        <button onClick={this.registerButtonClick}>Press To Register</button>
+        <button onClick={this.registerButtonClick}>Press To Register Your Emotion Selection</button>
       </div>
     )
   }

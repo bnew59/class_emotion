@@ -1,58 +1,63 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import axios from 'axios'
+const GETTING_IT = 'http://localhost:5000/GettingIt'
 
-class GettingIt extends Component {
+export class GettingIt extends Component {
 
   constructor(props) {
     super(props)
 
     // create the local state of the component
     this.state = {
-      GettingIt: 0
+      counter : 0
     }
+
   }
 
 
   incrementCounter = () => {
 
+    this.setState({
+      counter: this.state.counter + 1
+    })
+
     // dispatch an action to set the global state
     this.props.onIncrementDispatch()
 
-    this.setState({
-      GettingIt: this.state.GettingIt + 1
+    //let user = this.state.user
+    
+    axios.post(GETTING_IT,{
+      counter: this.state.counter
     })
-    
+    //.then((response))
 
   }
 
-  decrementCounter = () => {
-
-    this.props.onDecrementDispatch() 
-    
-
-  }
+  
 
   render() {
     return (
     <div>
-      <button className='GettingItButton' onClick={this.incrementCounter}> Getting It!</button>
-      <h1 className='GettingItNumber' >{this.state.GettingIt}</h1>
+      <button className='GettingItButton' onClick={this.incrementCounter}> Getting It</button>
+      <h1 className='GettingItNumber' >{this.props.GettingIt}</h1>
     </div>
 
     )
   }
-
 }
+
 
 const mapStateToProps = (state) => {
   return {
-    passengerCount: state.noOfPassengers
+    GettingIt: state.GettingIt
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onIncrementDispatch: () => dispatch({type: "GETTINGIT_COUNTER"})
+    
   }
 }
 
