@@ -42,6 +42,7 @@ app.post('/login', function(req, res){
 });
 
 app.post('/VeryLost', function(req, res){
+  
   db.any("INSERT INTO week_1 (uid, first_name, last_name, very_lost, week_num, comments) VALUES ('bnew', 'Brent', 'Newman', 1, 1, 'bla bla')")
 
   console.log('very lost posting')
