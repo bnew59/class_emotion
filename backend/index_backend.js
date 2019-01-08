@@ -14,19 +14,21 @@ app.use(cors())
 
 
 
-app.get('/users',function(req,res){
+// app.get('/users',function(req,res){
   
-  db.any('SELECT * FROM users')
-    .then(function(result){
-      res.json(result)
-    })
-})
+//   db.any('SELECT * FROM users')
+//     .then(function(result){
+//       res.json(result)
+//     })
+// })
 
 app.get('/week_1',function(req,res){
   
-  db.any('SELECT * FROM week_1')
+  db.any("SELECT VeryLost.*, SortOfGettingIt.*, GettingIt.* FROM VeryLost, SortOfGettingIt, GettingIt")
     .then(function(result){
       res.json(result)
+      console.log(result)
+
     })
 })
 
@@ -38,21 +40,21 @@ app.get('/week_1',function(req,res){
 
 app.post('/VeryLost', function(req, res){
 
-  db.any("INSERT INTO week_1 (very_lost, first_name, last_name, week_num, comments) VALUES ($1, $2, $3, $4, $5)", [req.body.counter, req.body.user.first_name, req.body.user.last_name, req.body.user.week_number, req.body.user.comments])
+  db.any("INSERT INTO VeryLost (very_lost, first_name, last_name, week_num, comments) VALUES ($1, $2, $3, $4, $5)", [req.body.counter, req.body.user.first_name, req.body.user.last_name, req.body.user.week_num, req.body.user.comments])
 
   console.log('very lost posting')
   res.end();
 })
 
 app.post('/SortOfGettingIt', function(req, res){
-  db.any("INSERT INTO week_1 (sort_of_getting_it, first_name, last_name, week_num, comments) VALUES ($1, $2, $3, $4, $5)", [req.body.counter, req.body.user.first_name, req.body.user.last_name, req.body.user.week_number, req.body.user.comments])
+  db.any("INSERT INTO SortOfGettingIt (sort_of_getting_it, first_name, last_name, week_num, comments) VALUES ($1, $2, $3, $4, $5)", [req.body.counter, req.body.user.first_name, req.body.user.last_name, req.body.user.week_num, req.body.user.comments])
 
   console.log('sort of posting')
   res.end();
 })
 
 app.post('/GettingIt', function(req, res){
-  db.any("INSERT INTO week_1 (getting_it, first_name, last_name, week_num, comments) VALUES ($1, $2, $3, $4, $5)", [req.body.counter, req.body.user.first_name, req.body.user.last_name, req.body.user.week_number, req.body.user.comments])
+  db.any("INSERT INTO GettingIt(getting_it, first_name, last_name, week_num, comments) VALUES ($1, $2, $3, $4, $5)", [req.body.counter, req.body.user.first_name, req.body.user.last_name, req.body.user.week_num, req.body.user.comments])
 
   console.log('getting it posting')
   res.end();

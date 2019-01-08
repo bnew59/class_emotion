@@ -12,66 +12,70 @@ import GettingIt from './components/GettingIt'
 // import {Login} from './components/Login'
 import BarChartComponent from './components/BarChartComponent';
 
-const weekOne = {
-// fetch get code for each week...
-// const weekOne = {
-//   fetch (postgres://localhost:5432/class_tracker/week_1)
-//   .then((resp) => resp.json())
-//     return weekOne(function(week_1)
-
-  week: 1, veryLost: 12, sortOfGettingIt: 9, gettingIt: 1
-}
-const weekTwo = {
-  week: 2, veryLost: 18, sortOfGettingIt: 10, gettingIt: 2
-}
-const weekThree = {
-  week: 3, veryLost: 20, sortOfGettingIt:9, gettingIt: 1
-}
-const weekFour = {
-  week: 4, veryLost: 25, sortOfGettingIt: 4, gettingIt: 1
-}
-var weeksData = [
-  weekOne, weekTwo, weekThree, weekFour
-]
 
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = { charts: []}
 
-    var renderedWeeks = []
+    this.state = { 
+      weekOne: [],
+      weekTwo: [],
+      weekThree: [],
+      weekFour: [],
+      veryLostCounter: 0
+    }
+  }
 
-    weeksData.forEach((week, index) => {
-      console.log(index)
+  componentDidMount() {
+    this.populateWeekOneChart()
+    
+  }
+
+    // var weeksData= []
+    // var renderedWeeks = []
+
+  populateWeekOneChart () {
+    fetch ('http://localhost:5000/week_1')
+    .then((resp) => resp.json())
+    .then((json) => {
+
+      this.setState({
+        weekOne : [json]
+      })
+    })
+
+    
+
+  }
+ 
+
+  render() {
+    
+    let weekOneChart = this.state.weekOne.map((week, index) => {
+      console.log(week)
+      
       var baseColors = [
         `rgba(255,0,0,1)`,
         `rgba(255,255,0,1)`,
         `rgba(0,255,0,1)`
-     ]
+      ]
 
-      var rendered = <div>
 
-        <BarChartComponent 
+    
+      return (
+        <div>
+          <BarChartComponent 
           backgroundColors={baseColors}
-          weekNumber={week.week}
-          veryLost={week.veryLost}
-          sortOfGettingIt={week.sortOfGettingIt}
-          gettingIt={week.gettingIt}
-      
-        
-        />
-
-      </div>
-
-      renderedWeeks.push(rendered)
+          weekNumber={week[index].week_num}
+          veryLost={week[index].very_lost}
+          sortOfGettingIt={week[index].sort_of_getting_it}
+          gettingIt={week[index].getting_it}
+    
+          />
+        </div>
+      )
 
     })
-
-    this.state.charts = renderedWeeks
-
-  }
-
-  render() {
     return (
       <div>
         
@@ -81,7 +85,7 @@ class App extends Component {
         <SortOfGettingIt />
         <GettingIt />
 
-        {this.state.charts}
+        {weekOneChart}
 
       </div>
     );
