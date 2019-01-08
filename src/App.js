@@ -8,11 +8,16 @@ import SortOfGettingIt from './components/SortOfGettingIt'
 import GettingIt from './components/GettingIt'
 // import FinanceButton from './components/FinanceButton'
 // simport Checkout from './Checkout'
-import {Register} from './components/Register'
+//import {Register} from './components/Register'
 // import {Login} from './components/Login'
 import BarChartComponent from './components/BarChartComponent';
 
 const weekOne = {
+// fetch get code for each week...
+// const weekOne = {
+//   fetch (postgres://localhost:5432/class_tracker/week_1)
+//   .then((resp) => resp.json())
+//     return weekOne(function(week_1)
 
   week: 1, veryLost: 12, sortOfGettingIt: 9, gettingIt: 1
 }
@@ -71,7 +76,7 @@ class App extends Component {
       <div>
         
         <h1 className='ClassRoomEmotion'>Classroom Emotion Tracker</h1>
-        <h2 className ='ClickTheButton'>Click The Button Below That Applies To You This Week...</h2>
+        <h2 className ='ClickTheButton'>Fill In The Row That Applies To You This Week...</h2>
         <VeryLost />
         <SortOfGettingIt />
         <GettingIt />

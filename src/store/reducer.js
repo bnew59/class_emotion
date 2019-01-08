@@ -1,9 +1,9 @@
 
 // GLOBAL STATE 
 const initialState = {
-  VeryLost: 0,
-  SortOfGettingIt: 0,
-  GettingIt: 0,
+  VeryLost: false,
+  SortOfGettingIt: false,
+  GettingIt: false,
 }
 
 
@@ -12,17 +12,17 @@ const reducer = (state = initialState, action) => {
   if(action.type == "VERYLOST_COUNTER") {
     return {
       ...state,
-      VeryLost: state.VeryLost + 1
+      VeryLost: true
     }}
   if(action.type == "SORTOFGETTINGIT_COUNTER") {
     return {
       ...state,
-      SortOfGettingIt: state.SortOfGettingIt + 1
+      SortOfGettingIt: true
     }}
     if(action.type == "GETTINGIT_COUNTER") {
       return {
         ...state,
-        GettingIt: state.GettingIt + 1
+        GettingIt: true
   }}
   if(action.type == "FINANCEBUTTON_COUNTER") {
     return {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import axios from 'axios'
+
 const VERY_LOST = 'http://localhost:5000/VeryLost'
 
 export class VeryLost extends Component {
@@ -10,39 +11,36 @@ export class VeryLost extends Component {
 
     // create the local state of the component
     this.state = {
-      counter : 0,
+      counter : true,
       user : {}
     }
 
   }
 
-
-  incrementCounter = () => {
-
-    this.setState({
-      counter: this.state.counter + 1
-    })
-
-    // dispatch an action to set the global state
-    this.props.onIncrementDispatch()
+  postToDatabase = () => {
 
     let user = this.state.user
-    
-    axios.post(VERY_LOST,{
-      counter: this.state.counter,
-      first_name: user.first_name,
-      last_name: user.last_name,
-      week_num: user.week_num,
-      comments: user.comments
+  
+
+    fetch('http://localhost:5000/VeryLost', {
+      method: 'POST',
+      headers : {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        counter : this.state.counter,
+        user: this.state.user
+      })
     })
-    .then((response) => {
+    .then(response => {
       console.log(response)
     })
 
   }
 
   handleTextBoxChange = (e) => {
-
+  
     this.setState({
       user : {
         ...this.state.user,
@@ -50,19 +48,31 @@ export class VeryLost extends Component {
       }
     })
     
-    }
+  }
+
+  handleVoteChange = () => {
+    this.setState({
+      counter: this.state.counter
+    },() => {
+      this.postToDatabase()
+    })
+
+    
+  }
+
+  
 
   render() {
     return (
       <div>
-        <h1>Register This Week's Emotion</h1>
+        <h1>Register Here If You Are Very Lost</h1>
         <input type="text" onChange={this.handleTextBoxChange} name="first_name" placeholder="First Name" />
         <input type="text" onChange={this.handleTextBoxChange} name="last_name" placeholder="Last Name" />
         <input type="text" onChange={this.handleTextBoxChange} name="week_num" placeholder="Week Number" />
         <input type="text" onChange={this.handleTextBoxChange} name="comments" placeholder="Comments" />
 
-        <button className='LostButton' onClick={this.incrementCounter}> Very Lost</button>
-        <h1 className='LostNumber' >{this.props.VeryLost}</h1>
+        <button className='LostButton' onClick={this.handleVoteChange}> Very Lost</button>
+  
       </div>
 
     )
@@ -70,17 +80,5 @@ export class VeryLost extends Component {
 }
 
 
-const mapStateToProps = (state) => {
-  return {
-    VeryLost: state.VeryLost
-  }
-}
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onIncrementDispatch: () => dispatch({type: "VERYLOST_COUNTER"})
-    
-  }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(VeryLost);
+export default VeryLost;

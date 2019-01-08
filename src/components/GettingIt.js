@@ -10,55 +10,75 @@ export class GettingIt extends Component {
 
     // create the local state of the component
     this.state = {
-      counter : 0
+      counter : true,
+      user : {}
     }
 
   }
 
 
-  incrementCounter = () => {
+  postToDatabase = () => {
 
+    let user = this.state.user
+  
+
+    fetch('http://localhost:5000/GettingIt', {
+      method: 'POST',
+      headers : {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        counter : this.state.counter,
+        user: this.state.user
+      })
+    })
+    .then(response => {
+      console.log(response)
+    })
+
+  }
+
+  handleTextBoxChange = (e) => {
+  
     this.setState({
-      counter: this.state.counter + 1
+      user : {
+        ...this.state.user,
+        [e.target.name] : e.target.value
+      }
     })
-
-    // dispatch an action to set the global state
-    this.props.onIncrementDispatch()
-
-    //let user = this.state.user
     
-    axios.post(GETTING_IT,{
-      counter: this.state.counter
-    })
-    //.then((response))
+  }
 
+  handleVoteChange = () => {
+    this.setState({
+      counter: this.state.counter
+    },() => {
+      this.postToDatabase()
+    })
+
+    
   }
 
   
 
   render() {
     return (
-    <div>
-      <button className='GettingItButton' onClick={this.incrementCounter}> Getting It</button>
-      <h1 className='GettingItNumber' >{this.props.GettingIt}</h1>
-    </div>
+      <div>
+        <h1>Register Here If You Are Getting It</h1>
+        <input type="text" onChange={this.handleTextBoxChange} name="first_name" placeholder="First Name" />
+        <input type="text" onChange={this.handleTextBoxChange} name="last_name" placeholder="Last Name" />
+        <input type="text" onChange={this.handleTextBoxChange} name="week_num" placeholder="Week Number" />
+        <input type="text" onChange={this.handleTextBoxChange} name="comments" placeholder="Comments" />
+
+        <button className='GettingItButton' onClick={this.handleVoteChange}> Getting It</button>
+  
+      </div>
 
     )
   }
 }
 
 
-const mapStateToProps = (state) => {
-  return {
-    GettingIt: state.GettingIt
-  }
-}
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onIncrementDispatch: () => dispatch({type: "GETTINGIT_COUNTER"})
-    
-  }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(GettingIt);
+export default GettingIt;

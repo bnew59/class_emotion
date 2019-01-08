@@ -10,54 +10,72 @@ export class SortOfGettingIt extends Component {
 
     // create the local state of the component
     this.state = {
-      SortOfGettingIt: 0
+      counter : true,
+      user : {}
     }
+
   }
 
+  postToDatabase = () => {
 
-  incrementCounter = () => {
+    let user = this.state.user
+  
 
+    fetch('http://localhost:5000/SortOfGettingIt', {
+      method: 'POST',
+      headers : {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        counter : this.state.counter,
+        user: this.state.user
+      })
+    })
+    .then(response => {
+      console.log(response)
+    })
+
+  }
+
+  handleTextBoxChange = (e) => {
+  
     this.setState({
-      counter: this.state.counter + 1
+      user : {
+        ...this.state.user,
+        [e.target.name] : e.target.value
+      }
     })
-
-    // dispatch an action to set the global state
-    this.props.onIncrementDispatch()
-
-    //let user = this.state.user
     
-    axios.post(SORT_OF_GETTING_IT,{
-      counter: this.state.counter
-    })
-    //.then((response))
+  }
 
+  handleVoteChange = () => {
+    this.setState({
+      counter: this.state.counter
+    },() => {
+      this.postToDatabase()
+    })
+
+    
   }
 
   
 
   render() {
     return (
-    <div>
-      <button className='SortOfButton' onClick={this.incrementCounter}> Sort Of Getting It</button>
-      <h1 className='SortOfNumber' >{this.props.SortOfGettingIt}</h1>
-    </div>
+      <div>
+        <h1>Register Here If You Are Sort Of Getting It</h1>
+        <input type="text" onChange={this.handleTextBoxChange} name="first_name" placeholder="First Name" />
+        <input type="text" onChange={this.handleTextBoxChange} name="last_name" placeholder="Last Name" />
+        <input type="text" onChange={this.handleTextBoxChange} name="week_num" placeholder="Week Number" />
+        <input type="text" onChange={this.handleTextBoxChange} name="comments" placeholder="Comments" />
+
+        <button className='SortOfButton' onClick={this.handleVoteChange}> Sort Of Getting It</button>
+  
+      </div>
 
     )
   }
 }
 
-
-const mapStateToProps = (state) => {
-  return {
-    SortOfGettingIt: state.SortOfGettingIt
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onIncrementDispatch: () => dispatch({type: "SORTOFGETTINGIT_COUNTER"})
-    
-  }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(SortOfGettingIt);
+export default SortOfGettingIt;
