@@ -22,21 +22,32 @@ app.use(cors())
 //     })
 // })
 
-app.get('/week_1',function(req,res){
-  
-  db.any("SELECT VeryLost.*, SortOfGettingIt.*, GettingIt.* FROM VeryLost, SortOfGettingIt, GettingIt")
-    .then(function(result){
-      res.json(result)
-      console.log(result)
-
+app.get('/week_1_verylost',function(req,res){
+  db.any("SELECT COUNT(very_lost) FROM verylost WHERE week_num='1'")
+    .then(function(verylostResult){
+      res.json(verylostResult)
+      console.log(verylostResult)
     })
 })
 
+app.get('/week_1_sortofgettingit',function(req,res){
+  db.any("SELECT COUNT('sort_of_getting_it') FROM sortofgettingit WHERE week_num='1'")
+    .then(function(verylostResult){
+      res.json(verylostResult)
+      console.log(verylostResult)
+    })
+})
 
-// app.post('/login', function(req, res){
-//   console.log('test');
-//   res.end(); // end the response
-// });
+app.get('/week_1_gettingit', function(req,res){
+  db.any("SELECT COUNT(getting_it) FROM gettingit WHERE week_num='1'")
+  .then(function(gettingitResult){
+    res.json(gettingitResult)
+    console.log(gettingitResult)
+  })
+
+})
+  
+
 
 app.post('/VeryLost', function(req, res){
 

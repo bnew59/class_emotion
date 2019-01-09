@@ -18,64 +18,94 @@ class App extends Component {
     super(props)
 
     this.state = { 
-      weekOne: [],
-      weekTwo: [],
-      weekThree: [],
-      weekFour: [],
-      veryLostCounter: 0
+        veryLost: [],
+        sortOfGettingIt: [],
+        gettingIt: [],
     }
   }
 
   componentDidMount() {
-    this.populateWeekOneChart()
+    this.populateWeekOneChartVeryLost()
+    this.populateWeekOneChartSortOfGettingIt()
+    this.populateWeekOneChartGettingIt()
     
   }
 
     // var weeksData= []
     // var renderedWeeks = []
 
-  populateWeekOneChart () {
-    fetch ('http://localhost:5000/week_1')
+  populateWeekOneChartVeryLost () {
+    fetch ('http://localhost:5000/week_1_verylost')
     .then((resp) => resp.json())
     .then((json) => {
-
       this.setState({
-        weekOne : [json]
+          veryLost: json
       })
     })
+  }
 
-    
+  populateWeekOneChartSortOfGettingIt () {
+    fetch ('http://localhost:5000/week_1_sortofgettingit')
+    .then((resp) => resp.json())
+    .then((json) => {
+      this.setState({
+          sortOfGettingIt: json
+      })
+    })
+  }
 
+  populateWeekOneChartGettingIt () {
+    fetch ('http://localhost:5000/week_1_gettingit')
+    .then((resp) => resp.json())
+    .then((json) => {
+      this.setState({
+          gettingIt: json
+      })
+    })
   }
  
 
   render() {
     
-    let weekOneChart = this.state.weekOne.map((week, index) => {
-      console.log(week)
-      
+    let counts = []
+
+    let weekOneChartVeryLost = this.state.veryLost.map((week, index) => {
+      counts.push(week)
+    })
+
+    let weekOneChartSortOf = this.state.sortOfGettingIt.map((week, index) => {
+      counts.push(week)
+    })
+
+    let weekOneChartGettingIt = this.state.gettingIt.map((week, index) => {
+      counts.push(week)
+    })
+  
+    console.log(counts)
+    
+    let weekOneChart = counts.map((vote, index) => {
+      console.log(vote)
       var baseColors = [
         `rgba(255,0,0,1)`,
         `rgba(255,255,0,1)`,
         `rgba(0,255,0,1)`
       ]
 
-
-    
       return (
-        <div>
-          <BarChartComponent 
-          backgroundColors={baseColors}
-          weekNumber={week[index].week_num}
-          veryLost={week[index].very_lost}
-          sortOfGettingIt={week[index].sort_of_getting_it}
-          gettingIt={week[index].getting_it}
-    
-          />
-        </div>
-      )
+          <div>
+            <BarChartComponent 
+            backgroundColors={baseColors}
+            weekNumber={1}
+            veryLost={vote.count}
+            sortOfGettingIt={vote.count}
+            gettingIt={vote.count}
+            />
+          </div>
 
+      )
     })
+    
+    
     return (
       <div>
         
@@ -86,6 +116,7 @@ class App extends Component {
         <GettingIt />
 
         {weekOneChart}
+
 
       </div>
     );
