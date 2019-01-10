@@ -22,24 +22,41 @@ app.use(cors())
 //     })
 // })
 
-app.get('/week_1_verylost',function(req,res){
-  db.any("SELECT COUNT(very_lost) FROM verylost WHERE week_num='1'")
+// app.get('/week_1_verylost',function(req,res){
+//   db.any("SELECT COUNT(very_lost) FROM verylost WHERE week_num='1'")
+//     .then(function(verylostResult){
+//       res.json(verylostResult)
+//       console.log(verylostResult)
+//     })
+// })
+
+
+app.get('/weekNumCountVeryLost',function(req,res){
+  db.any("SELECT week_num, COUNT(id) FROM verylost GROUP BY week_num ORDER BY week_num ASC;")
     .then(function(verylostResult){
       res.json(verylostResult)
       console.log(verylostResult)
     })
 })
 
-app.get('/week_1_sortofgettingit',function(req,res){
-  db.any("SELECT COUNT('sort_of_getting_it') FROM sortofgettingit WHERE week_num='1'")
-    .then(function(verylostResult){
-      res.json(verylostResult)
-      console.log(verylostResult)
+app.get('/weekNumCountSortOf',function(req,res){
+  db.any("SELECT week_num, COUNT(id) FROM sortofgettingit GROUP BY week_num ORDER BY week_num ASC;")
+    .then(function(sortofResult){
+      res.json(sortofResult)
+      console.log(sortofResult)
     })
 })
 
-app.get('/week_1_gettingit', function(req,res){
-  db.any("SELECT COUNT(getting_it) FROM gettingit WHERE week_num='1'")
+// app.get('/week_1_sortofgettingit',function(req,res){
+//   db.any("SELECT COUNT('sort_of_getting_it') FROM sortofgettingit WHERE week_num='1'")
+//     .then(function(verylostResult){
+//       res.json(verylostResult)
+//       console.log(verylostResult)
+//     })
+// })
+
+app.get('/weekNumCountGettingIt', function(req,res){
+  db.any("SELECT week_num, COUNT(id) FROM gettingit GROUP BY week_num ORDER BY week_num ASC;")
   .then(function(gettingitResult){
     res.json(gettingitResult)
     console.log(gettingitResult)

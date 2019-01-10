@@ -35,27 +35,31 @@ class App extends Component {
     // var renderedWeeks = []
 
   populateWeekOneChartVeryLost () {
-    fetch ('http://localhost:5000/week_1_verylost')
+    fetch ('http://localhost:5000/weekNumCountVeryLost')
     .then((resp) => resp.json())
     .then((json) => {
       this.setState({
-          veryLost: json
+          veryLost: json,
       })
     })
   }
 
+
+
   populateWeekOneChartSortOfGettingIt () {
-    fetch ('http://localhost:5000/week_1_sortofgettingit')
+    fetch ('http://localhost:5000/weekNumCountSortOf')
     .then((resp) => resp.json())
     .then((json) => {
+      console.log(json)
       this.setState({
+        
           sortOfGettingIt: json
       })
     })
   }
 
   populateWeekOneChartGettingIt () {
-    fetch ('http://localhost:5000/week_1_gettingit')
+    fetch ('http://localhost:5000/weekNumCountGettingIt')
     .then((resp) => resp.json())
     .then((json) => {
       this.setState({
@@ -81,45 +85,61 @@ class App extends Component {
       counts.push(week)
     })
   
-    console.log(counts)
+    // console.log(counts)
+
+    // console.log(this.state.veryLost)
     
-    let weekOneChart = counts.map((vote, index) => {
-      console.log(vote)
-      var baseColors = [
-        `rgba(255,0,0,1)`,
-        `rgba(255,255,0,1)`,
-        `rgba(0,255,0,1)`
-      ]
+    var baseColors = [
+      `rgba(255,0,0,1)`,
+      `rgba(255,255,0,1)`,
+      `rgba(0,255,0,1)`
+    ]
+
+    let veryLostWeekOne = this.state.veryLost.length == 0 ? 0 : this.state.veryLost[0].count 
+    let sortOfGettingItWeekOne  = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt[0].count 
+    let gettingItWeekOne  = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt[0].count
+    let weekNumberWeekOne  = this.state.veryLost.length == 0 ? 0 : this.state.veryLost[0].week_num
+
+    let veryLostWeekTwo = this.state.veryLost.length == 0 ? 0 : this.state.veryLost[1].count 
+    let sortOfGettingItWeekTwo = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt[1].count 
+    let gettingItWeekTwo = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt[1].count
+    let weekNumberWeekTwo = this.state.veryLost.length == 0 ? 0 : this.state.veryLost[1].week_num
+
 
       return (
-          <div>
-            <BarChartComponent 
-            backgroundColors={baseColors}
-            weekNumber={1}
-            veryLost={vote.count}
-            sortOfGettingIt={vote.count}
-            gettingIt={vote.count}
-            />
-          </div>
+        <div>
 
-      )
-    })
-    
-    
-    return (
-      <div>
-        
         <h1 className='ClassRoomEmotion'>Classroom Emotion Tracker</h1>
         <h2 className ='ClickTheButton'>Fill In The Row That Applies To You This Week...</h2>
-        <VeryLost />
-        <SortOfGettingIt />
-        <GettingIt />
+       
+          <div>
 
-        {weekOneChart}
+            <div>
+              <VeryLost />
+              <SortOfGettingIt />
+              <GettingIt />
+              <BarChartComponent 
+              backgroundColors={baseColors}
+              weekNumber={weekNumberWeekOne }
+              veryLost={veryLostWeekOne }
+              sortOfGettingIt={sortOfGettingItWeekOne }
+              gettingIt={gettingItWeekOne } />
+            </div>
+            <div>
+              <BarChartComponent 
+              backgroundColors={baseColors}
+              weekNumber={weekNumberWeekTwo}
+              veryLost={veryLostWeekTwo}
+              sortOfGettingIt={sortOfGettingItWeekTwo}
+              gettingIt={gettingItWeekTwo} />
+            </div>
 
-
-      </div>
-    );
+          </div>
+        </div>
+      )
+    // })
+    
+ 
   }
   
 }
