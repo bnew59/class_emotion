@@ -32,7 +32,7 @@ app.use(cors())
 
 
 app.get('/weekNumCountVeryLost',function(req,res){
-  db.any("SELECT week_num, COUNT(id) FROM verylost GROUP BY week_num ORDER BY week_num ASC;")
+  db.any("SELECT week_num, COUNT(id) FROM verylost GROUP BY week_num")
     .then(function(verylostResult){
       res.json(verylostResult)
       console.log(verylostResult)
@@ -40,7 +40,7 @@ app.get('/weekNumCountVeryLost',function(req,res){
 })
 
 app.get('/weekNumCountSortOf',function(req,res){
-  db.any("SELECT week_num, COUNT(id) FROM sortofgettingit GROUP BY week_num ORDER BY week_num ASC;")
+  db.any("SELECT week_num, COUNT(id) FROM sortofgettingit GROUP BY week_num")
     .then(function(sortofResult){
       res.json(sortofResult)
       console.log(sortofResult)
@@ -56,7 +56,7 @@ app.get('/weekNumCountSortOf',function(req,res){
 // })
 
 app.get('/weekNumCountGettingIt', function(req,res){
-  db.any("SELECT week_num, COUNT(id) FROM gettingit GROUP BY week_num ORDER BY week_num ASC;")
+  db.any("SELECT week_num, COUNT(id) FROM gettingit GROUP BY week_num")
   .then(function(gettingitResult){
     res.json(gettingitResult)
     console.log(gettingitResult)

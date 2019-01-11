@@ -50,9 +50,7 @@ class App extends Component {
     fetch ('http://localhost:5000/weekNumCountSortOf')
     .then((resp) => resp.json())
     .then((json) => {
-      console.log(json)
       this.setState({
-        
           sortOfGettingIt: json
       })
     })
@@ -95,16 +93,30 @@ class App extends Component {
       `rgba(0,255,0,1)`
     ]
 
-    let veryLostWeekOne = this.state.veryLost.length == 0 ? 0 : this.state.veryLost[0].count 
-    let sortOfGettingItWeekOne  = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt[0].count 
-    let gettingItWeekOne  = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt[0].count
-    let weekNumberWeekOne  = this.state.veryLost.length == 0 ? 0 : this.state.veryLost[0].week_num
+    let veryLostWeekOne = this.state.veryLost.length == 0 ? 0 : this.state.veryLost.slice(-1)[0].count 
+    let sortOfGettingItWeekOne  = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt.slice(-1)[0].count 
+    let gettingItWeekOne  = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt.slice(-1)[0].count
+    let weekNumberWeekOne  = 1
 
-    let veryLostWeekTwo = this.state.veryLost.length == 0 ? 0 : this.state.veryLost[1].count 
-    let sortOfGettingItWeekTwo = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt[1].count 
-    let gettingItWeekTwo = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt[1].count
-    let weekNumberWeekTwo = this.state.veryLost.length == 0 ? 0 : this.state.veryLost[1].week_num
+    let veryLostWeekTwo = this.state.veryLost.length == 0 ? 0 : this.state.veryLost.slice(-2)[0].count 
+    let sortOfGettingItWeekTwo = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt.slice(-2)[0].count 
+    let gettingItWeekTwo = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt.slice(-2)[0].count
+    let weekNumberWeekTwo = 2
 
+    let veryLostWeekThree = this.state.veryLost.length == 0 ? 0 : this.state.veryLost.slice(-3)[0].count 
+    let sortOfGettingItWeekThree = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt.slice(-3)[0].count 
+    let gettingItWeekThree = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt.slice(-3)[0].count
+    let weekNumberWeekThree = 3
+
+    let veryLostWeekFour = this.state.veryLost.length == 0 ? 0 : this.state.veryLost.slice(-4)[0].count 
+    let sortOfGettingItWeekFour = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt.slice(-4)[0].count 
+    let gettingItWeekFour = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt.slice(-4)[0].count
+    let weekNumberWeekFour = 4
+
+    let veryLostWeekFive = this.state.veryLost.length == 0 ? 0 : this.state.veryLost.slice(-4)[0].count 
+    let sortOfGettingItWeekFive = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt.slice(-4)[0].count 
+    let gettingItWeekFive = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt.slice(-4)[0].count
+    let weekNumberWeekFive = 5
 
       return (
         <div>
@@ -133,6 +145,31 @@ class App extends Component {
               sortOfGettingIt={sortOfGettingItWeekTwo}
               gettingIt={gettingItWeekTwo} />
             </div>
+            <div>
+              <BarChartComponent 
+              backgroundColors={baseColors}
+              weekNumber={weekNumberWeekThree}
+              veryLost={veryLostWeekThree}
+              sortOfGettingIt={sortOfGettingItWeekThree}
+              gettingIt={gettingItWeekThree} />
+            </div>
+            <div>
+              <BarChartComponent 
+              backgroundColors={baseColors}
+              weekNumber={weekNumberWeekFour}
+              veryLost={veryLostWeekFour}
+              sortOfGettingIt={sortOfGettingItWeekFour}
+              gettingIt={gettingItWeekFour} />
+            </div>
+            <div>
+              <BarChartComponent 
+              backgroundColors={baseColors}
+              weekNumber={weekNumberWeekFive}
+              veryLost={veryLostWeekFive}
+              sortOfGettingIt={sortOfGettingItWeekFive}
+              gettingIt={gettingItWeekFive} />
+            </div>
+
 
           </div>
         </div>
