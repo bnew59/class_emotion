@@ -20,7 +20,7 @@ export class VeryLost extends Component {
   postToDatabase = () => {
   
 
-    fetch('http://localhost:5000/VeryLost', {
+    fetch(VERY_LOST, {
       method: 'POST',
       headers : {
         'Content-Type': 'application/json',
@@ -33,6 +33,7 @@ export class VeryLost extends Component {
     })
     .then(response => {
       console.log(response)
+      console.log("Response to posting to Very lost db")
     })
 
     console.log(this.state.user)

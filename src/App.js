@@ -18,9 +18,9 @@ class App extends Component {
     super(props)
 
     this.state = { 
-        veryLost: [],
-        sortOfGettingIt: [],
-        gettingIt: [],
+      veryLost: [],
+      sortOfGettingIt: [],
+      gettingIt: []
     }
   }
 
@@ -28,6 +28,7 @@ class App extends Component {
     this.populateWeekOneChartVeryLost()
     this.populateWeekOneChartSortOfGettingIt()
     this.populateWeekOneChartGettingIt()
+    
     
   }
 
@@ -65,23 +66,15 @@ class App extends Component {
       })
     })
   }
+
+  determineWeekNum () {
+      
+    
+  }
  
 
   render() {
-    
-    let counts = []
-
-    let weekOneChartVeryLost = this.state.veryLost.map((week, index) => {
-      counts.push(week)
-    })
-
-    let weekOneChartSortOf = this.state.sortOfGettingIt.map((week, index) => {
-      counts.push(week)
-    })
-
-    let weekOneChartGettingIt = this.state.gettingIt.map((week, index) => {
-      counts.push(week)
-    })
+  
   
     // console.log(counts)
 
@@ -93,30 +86,47 @@ class App extends Component {
       `rgba(0,255,0,1)`
     ]
 
-    let veryLostWeekOne = this.state.veryLost.length == 0 ? 0 : this.state.veryLost.slice(-1)[0].count 
-    let sortOfGettingItWeekOne  = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt.slice(-1)[0].count 
-    let gettingItWeekOne  = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt.slice(-1)[0].count
+
+
+
+    
+// for(let i=0; i<VeryLost.length; i++){
+//   console.log(VeryLost[i])
+//   console.log("inside for loop")
+  // if(VeryLost[i].week_num == 1){
+  //   var veryLostWeekOne = VeryLost[i]
+  // }
+// }
+
+//if(state.length < 1)
+    console.log(this.state)
+   
+    let veryLostWeekOne = this.state.veryLost.length == 0 ? 0 : this.state.veryLost[0].count
+    let sortOfGettingItWeekOne  = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt[0].count
+    let gettingItWeekOne  = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt[0].count
     let weekNumberWeekOne  = 1
+//return 0;
+// If index does not Exist, set count to 0
 
-    let veryLostWeekTwo = this.state.veryLost.length == 0 ? 0 : this.state.veryLost.slice(-2)[0].count 
-    let sortOfGettingItWeekTwo = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt.slice(-2)[0].count 
-    let gettingItWeekTwo = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt.slice(-2)[0].count
-    let weekNumberWeekTwo = 2
+    // let veryLostWeekTwo = this.state.veryLost.length == 0 ? 0 : this.state.veryLost[1].count 
+    // let sortOfGettingItWeekTwo = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt[1].count 
+    // let gettingItWeekTwo = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt[1].count
+    // let weekNumberWeekTwo = 2
 
-    let veryLostWeekThree = this.state.veryLost.length == 0 ? 0 : this.state.veryLost.slice(-3)[0].count 
-    let sortOfGettingItWeekThree = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt.slice(-3)[0].count 
-    let gettingItWeekThree = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt.slice(-3)[0].count
-    let weekNumberWeekThree = 3
+    // let veryLostWeekThree = this.state.veryLost.length == 0 ? 0 : this.state.veryLost[2].count 
+    // let sortOfGettingItWeekThree = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt[2].count 
+    // let gettingItWeekThree = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt[2].count
+    // let weekNumberWeekThree = 3
 
-    let veryLostWeekFour = this.state.veryLost.length == 0 ? 0 : this.state.veryLost.slice(-4)[0].count 
-    let sortOfGettingItWeekFour = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt.slice(-4)[0].count 
-    let gettingItWeekFour = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt.slice(-4)[0].count
-    let weekNumberWeekFour = 4
+    // let veryLostWeekFour = this.state.veryLost.length == 0 ? 0 : this.state.veryLost[3].count 
+    // let sortOfGettingItWeekFour = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt[3].count 
+    // let gettingItWeekFour = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt[3].count
+    // let weekNumberWeekFour = 4
 
-    let veryLostWeekFive = this.state.veryLost.length == 0 ? 0 : this.state.veryLost.slice(-4)[0].count 
-    let sortOfGettingItWeekFive = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt.slice(-4)[0].count 
-    let gettingItWeekFive = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt.slice(-4)[0].count
-    let weekNumberWeekFive = 5
+    // let veryLostWeekFive = this.state.veryLost.length == 0 ? 0 : this.state.veryLost[4].count 
+    // let sortOfGettingItWeekFive = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt.slice(-4)[0].count 
+    // let gettingItWeekFive = this.state.gettingIt.length == 0 ? 0 : this.state.gettingIt.slice(-4)[0].count
+    // let weekNumberWeekFive = 5
 
       return (
         <div>
@@ -137,38 +147,8 @@ class App extends Component {
               sortOfGettingIt={sortOfGettingItWeekOne }
               gettingIt={gettingItWeekOne } />
             </div>
-            <div>
-              <BarChartComponent 
-              backgroundColors={baseColors}
-              weekNumber={weekNumberWeekTwo}
-              veryLost={veryLostWeekTwo}
-              sortOfGettingIt={sortOfGettingItWeekTwo}
-              gettingIt={gettingItWeekTwo} />
-            </div>
-            <div>
-              <BarChartComponent 
-              backgroundColors={baseColors}
-              weekNumber={weekNumberWeekThree}
-              veryLost={veryLostWeekThree}
-              sortOfGettingIt={sortOfGettingItWeekThree}
-              gettingIt={gettingItWeekThree} />
-            </div>
-            <div>
-              <BarChartComponent 
-              backgroundColors={baseColors}
-              weekNumber={weekNumberWeekFour}
-              veryLost={veryLostWeekFour}
-              sortOfGettingIt={sortOfGettingItWeekFour}
-              gettingIt={gettingItWeekFour} />
-            </div>
-            <div>
-              <BarChartComponent 
-              backgroundColors={baseColors}
-              weekNumber={weekNumberWeekFive}
-              veryLost={veryLostWeekFive}
-              sortOfGettingIt={sortOfGettingItWeekFive}
-              gettingIt={gettingItWeekFive} />
-            </div>
+            
+            
 
 
           </div>
@@ -182,3 +162,30 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+
+            //   <BarChartComponent 
+            //   backgroundColors={baseColors}
+            //   weekNumber={weekNumberWeekTwo}
+            //   veryLost={veryLostWeekTwo}
+            //   sortOfGettingIt={sortOfGettingItWeekTwo}
+            //   gettingIt={gettingItWeekTwo} />
+            // </div>
+            // <div>
+            //   <BarChartComponent 
+            //   backgroundColors={baseColors}
+            //   weekNumber={weekNumberWeekThree}
+            //   veryLost={veryLostWeekThree}
+            //   sortOfGettingIt={sortOfGettingItWeekThree}
+            //   gettingIt={gettingItWeekThree} />
+            // </div>
+            // <div>
+            //   <BarChartComponent 
+            //   backgroundColors={baseColors}
+            //   weekNumber={weekNumberWeekFour}
+            //   veryLost={veryLostWeekFour}
+            //   sortOfGettingIt={sortOfGettingItWeekFour}
+            //   gettingIt={gettingItWeekFour} />
+            // </div>
