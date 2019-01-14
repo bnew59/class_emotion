@@ -32,9 +32,9 @@
 }
 
 .GettingItButton {
-  margin-left: 180px;
+  margin-left: 100px;
   color:green;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
 }
 .GettingItNumber {
@@ -42,9 +42,9 @@
   margin-bottom: 50px;
 }
 .SortOfButton {
-  margin-left: 130px;
+  margin-left: 100px;
   color: orange;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
 }
 .SortOfNumber {
@@ -52,9 +52,9 @@
   margin-bottom: 50px;
 }
 .LostButton {
-  margin-left: 180px;
+  margin-left: 100px;
   color: red;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
 }
 .LostNumber {
@@ -71,4 +71,22 @@
 .ClickTheButton {
   margin-left: 80px;
   margin-bottom: 80px;
+}
+.RegisterTextBoxVeryLost {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+.RegisterTextBoxSortOf {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+.RegisterTextBoxGettingIt {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
 }

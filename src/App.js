@@ -132,7 +132,7 @@ class App extends Component {
         <div>
 
         <h1 className='ClassRoomEmotion'>Classroom Emotion Tracker</h1>
-        <h2 className ='ClickTheButton'>Fill In The Row That Applies To You For Week 1 ...</h2>
+        <h1 className ='ClickTheButton'>Fill In The Row That Applies To You For Week 1 ...</h1>
        
           <div>
 

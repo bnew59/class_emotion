@@ -65,10 +65,12 @@ export class GettingIt extends Component {
   render() {
     return (
       <div>
-        <h1>Register Here If You Are Getting It</h1>
+        <h2>Register Here If You Are Getting It</h2>
+        <div className= 'RegisterTextBoxGettingIt'>
         <input type="text" onChange={this.handleTextBoxChange} name="first_name" placeholder="First Name" />
         <input type="text" onChange={this.handleTextBoxChange} name="last_name" placeholder="Last Name" />
         <input type="text" onChange={this.handleTextBoxChange} name="comments" placeholder="Comments" />
+      </div>
 
         <button className='GettingItButton' onClick={this.handleVoteChange}> Getting It</button>
   
