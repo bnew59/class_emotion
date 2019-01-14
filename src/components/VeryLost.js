@@ -68,7 +68,6 @@ export class VeryLost extends Component {
         <h1>Register Here If You Are Very Lost</h1>
         <input type="text" onChange={this.handleTextBoxChange} name="first_name" placeholder="First Name" />
         <input type="text" onChange={this.handleTextBoxChange} name="last_name" placeholder="Last Name" />
-        <input type="number" onChange={this.handleTextBoxChange} name="week_num" placeholder="Week Number" />
         <input type="text" onChange={this.handleTextBoxChange} name="comments" placeholder="Comments" />
 
         <button className='LostButton' onClick={this.handleVoteChange}> Very Lost</button>
