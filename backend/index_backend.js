@@ -35,7 +35,6 @@ app.get('/weekNumCountVeryLost',function(req,res){
   db.any("SELECT COUNT(id) FROM verylost")
     .then(function(verylostResult){
       res.json(verylostResult)
-      console.log(verylostResult)
     })
 })
 
@@ -43,7 +42,6 @@ app.get('/weekNumCountSortOf',function(req,res){
   db.any("SELECT COUNT(id) FROM sortofgettingit")
     .then(function(sortofResult){
       res.json(sortofResult)
-      console.log(sortofResult)
     })
 })
 
@@ -59,7 +57,6 @@ app.get('/weekNumCountGettingIt', function(req,res){
   db.any("SELECT COUNT(id) FROM gettingit")
   .then(function(gettingitResult){
     res.json(gettingitResult)
-    console.log(gettingitResult)
   })
 
 })
@@ -69,22 +66,16 @@ app.get('/weekNumCountGettingIt', function(req,res){
 app.post('/VeryLost', function(req, res){
 
   db.any("INSERT INTO VeryLost (very_lost, first_name, last_name, week_num, comments) VALUES ($1, $2, $3, $4, $5)", [req.body.counter, req.body.user.first_name, req.body.user.last_name, req.body.user.week_num, req.body.user.comments])
-
-  console.log('very lost posting')
   res.end();
 })
 
 app.post('/SortOfGettingIt', function(req, res){
   db.any("INSERT INTO SortOfGettingIt (sort_of_getting_it, first_name, last_name, week_num, comments) VALUES ($1, $2, $3, $4, $5)", [req.body.counter, req.body.user.first_name, req.body.user.last_name, req.body.user.week_num, req.body.user.comments])
-
-  console.log('sort of posting')
   res.end();
 })
 
 app.post('/GettingIt', function(req, res){
   db.any("INSERT INTO GettingIt(getting_it, first_name, last_name, week_num, comments) VALUES ($1, $2, $3, $4, $5)", [req.body.counter, req.body.user.first_name, req.body.user.last_name, req.body.user.week_num, req.body.user.comments])
-
-  console.log('getting it posting')
   res.end();
 })
 

@@ -63,15 +63,16 @@ export class SortOfGettingIt extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Register Here If You Are Sort Of Getting It</h2>
+      <div className='voteContainerSortOf'>
+        <div>
+        <h2>Register Here If You Are Sort Of Getting It </h2>
         <div className= 'RegisterTextBoxSortOf'>
         <input type="text" onChange={this.handleTextBoxChange} name="first_name" placeholder="First Name" />
         <input type="text" onChange={this.handleTextBoxChange} name="last_name" placeholder="Last Name" />
         <input type="text" onChange={this.handleTextBoxChange} name="comments" placeholder="Comments" />
       </div>
-        <button className='SortOfButton' onClick={this.handleVoteChange}> Sort Of Getting It</button>
-  
+        <button className='SortOfButton' onClick={this.handleVoteChange}> Sort Of</button>
+        </div>
       </div>
 
     )
