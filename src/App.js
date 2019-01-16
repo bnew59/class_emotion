@@ -34,9 +34,19 @@ class App extends Component {
     
   }
 
+populateWeekOneChartVeryLost = () => {
+  fetch ('http://localhost:5000/weekNumCountVeryLost')
+  .then((resp) => resp.json())
+  .then((json) => {
+    this.setState({
+        veryLost: json,
+    })
+  })
+}
+
     // var weeksData= []
     // var renderedWeeks = []
-
+/*
   populateWeekOneChartVeryLost () {
     fetch ('http://localhost:5000/weekNumCountVeryLost')
     .then((resp) => resp.json())
@@ -45,11 +55,11 @@ class App extends Component {
           veryLost: json,
       })
     })
-  }
+  } */
 
 
 
-  populateWeekOneChartSortOfGettingIt () {
+  populateWeekOneChartSortOfGettingIt = () => {
     fetch ('http://localhost:5000/weekNumCountSortOf')
     .then((resp) => resp.json())
     .then((json) => {
@@ -59,7 +69,7 @@ class App extends Component {
     })
   }
 
-  populateWeekOneChartGettingIt () {
+  populateWeekOneChartGettingIt = () => {
     fetch ('http://localhost:5000/weekNumCountGettingIt')
     .then((resp) => resp.json())
     .then((json) => {
@@ -138,9 +148,9 @@ class App extends Component {
           <div>
 
             <div>
-              <VeryLost />
-              <SortOfGettingIt />
-              <GettingIt />
+              <VeryLost callback={this.populateWeekOneChartVeryLost}/>
+              <SortOfGettingIt callback={this.populateWeekOneChartSortOfGettingIt}/>
+              <GettingIt callback={this.populateWeekOneChartGettingIt}/>
               <BarChartComponent 
               backgroundColors={baseColors}
               weekNumber={weekNumberWeekOne }

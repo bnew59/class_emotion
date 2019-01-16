@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import axios from 'axios'
+import { withRouter } from 'react-router';
 
 const VERY_LOST = 'http://localhost:5000/VeryLost'
 
@@ -34,6 +35,7 @@ export class VeryLost extends Component {
     .then(response => {
       console.log(response)
       console.log("Response to posting to Very lost db")
+      this.props.callback()
       
     })
 
@@ -58,6 +60,9 @@ export class VeryLost extends Component {
       this.postToDatabase()
     })
 
+    this.props.history.push('/')
+    //this.props.router.push('/')
+
     
   }
 
@@ -73,7 +78,7 @@ export class VeryLost extends Component {
         <input type="text" onChange={this.handleTextBoxChange} name="last_name" placeholder="Last Name" />
         <input type="text" onChange={this.handleTextBoxChange} name="comments" placeholder="Comments" />
       </div>
-        <button className='LostButton' onClick={this.handleVoteChange}> Very Lost</button>
+        <button className='LostButton' onClick={this.handleVoteChange.bind(this)}> Very Lost</button>
         </div>
       </div>
 
@@ -83,4 +88,4 @@ export class VeryLost extends Component {
 
 
 
-export default VeryLost;
+export default withRouter(VeryLost);
