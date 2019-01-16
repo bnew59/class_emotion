@@ -45,14 +45,6 @@ app.get('/weekNumCountSortOf',function(req,res){
     })
 })
 
-// app.get('/week_1_sortofgettingit',function(req,res){
-//   db.any("SELECT COUNT('sort_of_getting_it') FROM sortofgettingit WHERE week_num='1'")
-//     .then(function(verylostResult){
-//       res.json(verylostResult)
-//       console.log(verylostResult)
-//     })
-// })
-
 app.get('/weekNumCountGettingIt', function(req,res){
   db.any("SELECT COUNT(id) FROM gettingit")
   .then(function(gettingitResult){
@@ -60,8 +52,31 @@ app.get('/weekNumCountGettingIt', function(req,res){
   })
 
 })
-  
 
+//app.get statement for selecting names from each table
+app.get('/veryLostNames', function(req,res){
+  db.any("SELECT first_name, last_name, comments FROM verylost")
+  .then(function(veryLostNamesResult){
+    res.json(veryLostNamesResult)
+
+  })
+})
+
+app.get('/sortOfGettingItNames', function(req,res){
+  db.any("SELECT first_name, last_name, comments FROM sortofgettingit")
+  .then(function(sortOfGettingItNamesResult){
+    res.json(sortOfGettingItNamesResult)
+
+  })
+})
+
+app.get('/gettingItNames', function(req,res){
+  db.any("SELECT first_name, last_name, comments FROM gettingit")
+  .then(function(gettingItNamesResult){
+    res.json(gettingItNamesResult)
+
+  })
+})
 
 app.post('/VeryLost', function(req, res){
 

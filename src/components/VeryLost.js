@@ -34,6 +34,7 @@ export class VeryLost extends Component {
     .then(response => {
       console.log(response)
       console.log("Response to posting to Very lost db")
+      
     })
 
     console.log(this.state.user)

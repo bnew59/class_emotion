@@ -21,7 +21,7 @@ export default class BarChartComponent extends Component
           labels: labelsArray,
           datasets:[
              {
-                label: `Week ${weekNumber}`,
+                label: 'Current Votes',
                 data: valuesArray,
                 backgroundColor: backgroundColors,
       
@@ -34,8 +34,8 @@ export default class BarChartComponent extends Component
            yAxes: [{
                ticks: {
                    min: 0,
-                   max: 30,
-                   stepSize: 5    
+                   max: 40,
+                   stepSize: 5   
                }
              }]
           },

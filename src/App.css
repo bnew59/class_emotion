@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -29,48 +29,61 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 .GettingItButton {
-  margin-left: 100px;
+  margin-left: 140px;
   color:green;
   font-size: 20px;
   font-weight: bold;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2);
+  transition-duration: 0.4s;
+  text-decoration: none;
+  cursor: pointer;
+  
 }
 .GettingItNumber {
   margin-left: 240px;
   margin-bottom: 50px;
 }
 .SortOfButton {
-  margin-left: 100px;
+  margin-left: 160px;
   color: orange;
   font-size: 20px;
   font-weight: bold;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2);
+  transition-duration: 0.4s;
+  text-decoration: none;
+  cursor: pointer;
 }
 .SortOfNumber {
   margin-left: 240px;
   margin-bottom: 50px;
 }
 .LostButton {
-  margin-left: 100px;
+  margin-left: 140px;
   color: red;
   font-size: 20px;
   font-weight: bold;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2);
+  transition-duration: 0.4s;
+  text-decoration: none;
+  cursor: pointer;
 }
 .LostNumber {
   margin-left: 240px;
   margin-bottom: 50px;
 }
 .ClassRoomEmotion {
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 40px;
+  margin-bottom: 30px;
   margin-right: 150px;
-  margin-left: 180px;
+  margin-left: 160px;
   color:red
 }
-.ClickTheButton {
-  margin-left: 80px;
-  margin-bottom: 80px;
+.FillInTheArea {
+  margin-left: 50px;
+  margin-bottom: 30px;
 }
 .RegisterTextBoxVeryLost {
   width: 100%;
@@ -136,3 +149,39 @@ h2 {
   margin-left: 100px;
   margin-bottom: 30px;
 }
+
+.veryLostNameList {
+  border:5px solid red;
+  color:black;
+  overflow: auto; 
+  width:300px; 
+  height:200px;
+  margin-left: 10px;
+  padding-left: 10px;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+  .sortOfGettingItNameList {
+    border:5px solid orange;
+    color:black;
+    overflow: auto; 
+    width:300px; 
+    height:200px;
+    margin-left: 10px;
+    padding-left: 10px;
+    display: inline-block;
+  }
+
+    .gettingItNameList {
+      border:5px solid green;
+      color:black;
+      overflow: auto; 
+      width:300px; 
+      height:200px;
+      margin-left: 10px;
+      padding-left: 10px;
+      display: inline-block;
+    }
+
+

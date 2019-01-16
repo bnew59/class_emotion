@@ -35,6 +35,7 @@ export class GettingIt extends Component {
     })
     .then(response => {
       console.log(response)
+      
     })
 
   }

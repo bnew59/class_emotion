@@ -34,7 +34,9 @@ export class SortOfGettingIt extends Component {
     })
     .then(response => {
       console.log(response)
+      console.log(this.props)
     })
+    
 
   }
 

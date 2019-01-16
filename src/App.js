@@ -11,6 +11,8 @@ import GettingIt from './components/GettingIt'
 //import {Register} from './components/Register'
 // import {Login} from './components/Login'
 import BarChartComponent from './components/BarChartComponent';
+import { withRouter } from 'react-router'
+import VoteNames from './components/VoteNames'
 
 
 class App extends Component {
@@ -99,7 +101,6 @@ class App extends Component {
 // }
 
 //if(state.length < 1)
-    console.log(this.state)
    
     let veryLostWeekOne = this.state.veryLost.length == 0 ? 0 : this.state.veryLost[0].count
     let sortOfGettingItWeekOne  = this.state.sortOfGettingIt.length == 0 ? 0 : this.state.sortOfGettingIt[0].count
@@ -132,7 +133,7 @@ class App extends Component {
         <div>
 
         <h1 className='ClassRoomEmotion'>Classroom Emotion Tracker</h1>
-        <h1 className ='ClickTheButton'>Fill In The Area That Applies To You This Week</h1>
+        <h1 className ='FillInTheArea'>Fill In The Area That Applies To You This Week</h1>
        
           <div>
 
@@ -147,6 +148,11 @@ class App extends Component {
               sortOfGettingIt={sortOfGettingItWeekOne }
               gettingIt={gettingItWeekOne } />
             </div>
+
+            <VoteNames />
+
+
+
             
             
 
@@ -161,7 +167,7 @@ class App extends Component {
   
 }
 
-export default App;
+export default withRouter(App);
 
 
 
