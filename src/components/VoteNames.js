@@ -6,26 +6,29 @@ export class VoteNames extends Component {
         super(props)
     
         this.state = { 
-          veryLostNames: [],
-          sortOfGettingItNames: [],
-          gettingItNames: []
+          veryLostNames: this.props.veryLostNames,
+          sortOfGettingItNames: this.props.sortOfGettingItNames,
+          gettingItNames: this.props.gettingItNames
         }
       }
 
       componentDidMount() {
-        //calling functions for getting names
+        console.log(this.state.sortOfGettingItNames + " sort of getting it names")
         this.populateVeryLostNames()
         this.populatesortOfGettingItNames()
         this.populategettingItNames()
         
       }
-
-      //fetch from database all the names for each state - verylost
+      componentWillReceiveProps(){
+        this.populateVeryLostNames()
+        this.populatesortOfGettingItNames()
+        this.populategettingItNames()
+      }
       populateVeryLostNames = () => {
         fetch ('http://localhost:5000/veryLostNames')
         .then((resp) => resp.json())
         .then((json) => {
-            //console.log(json)
+
         this.setState({
             veryLostNames: json,
       })
@@ -88,17 +91,17 @@ export class VoteNames extends Component {
         <div>
             <div className= 'veryLostNameList'>
             <h3>Very Lost Names & Comments</h3>
-            <p>{veryLostNamesList}</p>
+            {veryLostNamesList}
             </div>
 
             <div className= 'sortOfGettingItNameList'>
             <h3>Sort Of Names & Comments</h3>
-            <p>{sortOfGettingItNamesList}</p>
+            {sortOfGettingItNamesList}
             </div>
 
             <div className= 'gettingItNameList'>
             <h3>Getting It Names & Comments</h3>
-            <p>{gettingItNamesList}</p>
+            {gettingItNamesList}
             </div>
         </div>
       

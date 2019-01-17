@@ -8,7 +8,6 @@ export class SortOfGettingIt extends Component {
   constructor(props) {
     super(props)
 
-    // create the local state of the component
     this.state = {
       counter : true,
       user : {}
@@ -36,6 +35,8 @@ export class SortOfGettingIt extends Component {
       console.log(response)
       console.log(this.props)
       this.props.callback()
+      this.props.callback2()
+
     })
     
 
@@ -61,8 +62,6 @@ export class SortOfGettingIt extends Component {
 
     
   }
-
-  
 
   render() {
     return (

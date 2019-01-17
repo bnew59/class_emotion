@@ -10,7 +10,6 @@ export class VeryLost extends Component {
   constructor(props) {
     super(props)
 
-    // create the local state of the component
     this.state = {
       counter : true,
       user : {}
@@ -33,9 +32,8 @@ export class VeryLost extends Component {
       })
     })
     .then(response => {
-      console.log(response)
-      console.log("Response to posting to Very lost db")
       this.props.callback()
+      this.props.callback2()
       
     })
 
@@ -61,8 +59,6 @@ export class VeryLost extends Component {
     })
 
     this.props.history.push('/')
-    //this.props.router.push('/')
-
     
   }
 

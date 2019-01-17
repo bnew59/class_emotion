@@ -8,14 +8,12 @@ export class GettingIt extends Component {
   constructor(props) {
     super(props)
 
-    // create the local state of the component
     this.state = {
       counter : true,
       user : {}
     }
 
   }
-
 
   postToDatabase = () => {
 
@@ -35,7 +33,7 @@ export class GettingIt extends Component {
     })
     .then(response => {
       this.props.callback()
-      
+      this.props.callback2()
     })
 
   }
@@ -58,10 +56,7 @@ export class GettingIt extends Component {
       this.postToDatabase()
     })
 
-    
   }
-
-  
 
   render() {
     return (
@@ -80,7 +75,5 @@ export class GettingIt extends Component {
     )
   }
 }
-
-
 
 export default GettingIt;

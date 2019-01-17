@@ -80,7 +80,8 @@ app.get('/gettingItNames', function(req,res){
 
 app.post('/VeryLost', function(req, res){
 
-  db.any("INSERT INTO VeryLost (very_lost, first_name, last_name, week_num, comments) VALUES ($1, $2, $3, $4, $5)", [req.body.counter, req.body.user.first_name, req.body.user.last_name, req.body.user.week_num, req.body.user.comments])
+  db.any("INSERT INTO VeryLost (very_lost, first_name, last_name, week_num, comments) VALUES ($1, $2, $3, $4, $5)", [req.body.counter, req.body.user.first_name, req.body.user.last_name, req.body.user.week_num, req.body.user.comments]
+  )
   res.end();
 })
 
